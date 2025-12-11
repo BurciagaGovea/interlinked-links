@@ -14,109 +14,214 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        brand: {
-                            blue: '#0056b3', // Tu azul corporativo
-                            dark: '#0f172a',
-                        }
+                        brand: { blue: '#0056b3', dark: '#0f172a' }
                     },
                     boxShadow: {
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                        'card': '0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04)',
                     }
                 }
             }
         }
     </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col items-center py-12 px-4 selection:bg-blue-100 selection:text-blue-900">
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col items-center justify-center py-8 px-4 md:py-12">
 
-    <div class="fixed top-0 right-0 -z-10 translate-x-1/3 -translate-y-1/3 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl"></div>
-    <div class="fixed bottom-0 left-0 -z-10 -translate-x-1/3 translate-y-1/3 w-96 h-96 bg-slate-200/50 rounded-full blur-3xl"></div>
+    <div class="fixed top-0 right-0 -z-10 translate-x-1/3 -translate-y-1/3 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-0 left-0 -z-10 -translate-x-1/3 translate-y-1/3 w-96 h-96 bg-slate-300/40 rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="w-full max-w-[420px] mx-auto animate-[fadeIn_0.6s_ease-out]">
+    <div class="w-full max-w-[420px] mx-auto animate-[fadeIn_0.6s_ease-out] relative z-10 my-auto">
         
-        <div class="flex flex-col items-center mb-10">
-            <div class="relative group">
-                <div class="w-24 h-24 rounded-full bg-white p-1 shadow-soft mb-4 transition-transform duration-300 group-hover:scale-105">
-                    <img src="https://ui-avatars.com/api/?name=Interlinked+AI&background=0056b3&color=fff&bold=true&size=128" 
-                         alt="Interlinked Logo" 
-                         class="w-full h-full rounded-full object-cover">
-                </div>
-                <div class="absolute bottom-4 right-0 bg-blue-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full border-2 border-white" title="Verificado">
-                    <i class="fa-solid fa-check"></i>
-                </div>
-            </div>
+        <div class="bg-white rounded-3xl shadow-card border border-white/50 p-6 md:p-8 backdrop-blur-sm transition-all duration-500" id="main-card">
 
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Interlinked AI</h1>
-            <p class="text-slate-500 font-medium text-sm mt-1">Conectando negocios con inteligencia</p>
-            
-            <div class="flex gap-2 mt-4">
-                <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100">SaaS</span>
-                <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold border border-slate-200">Technology</span>
-            </div>
-        </div>
-
-        <div class="flex flex-col gap-3">
-
-            <a href="https://interlinked-ia.com" target="_blank"
-               class="flex items-center justify-between w-full p-4 bg-brand-blue text-white rounded-xl shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-0.5 group">
-                <div class="flex items-center gap-3">
-                    <div class="bg-white/20 w-8 h-8 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-globe text-sm"></i>
+            <div class="flex flex-col items-center mb-8 transition-all duration-500" id="profile-header">
+                <div class="relative group">
+                    <div class="w-24 h-24 rounded-full bg-slate-50 p-1 shadow-soft mb-4 border border-slate-100">
+                        <img src="https://ui-avatars.com/api/?name=Interlinked+AI&background=0056b3&color=fff&bold=true&size=128" alt="Logo" class="w-full h-full rounded-full object-cover">
                     </div>
-                    <span class="font-semibold">Sitio Web Oficial</span>
+                    <div class="absolute bottom-4 right-0 bg-blue-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full border-2 border-white"><i class="fa-solid fa-check"></i></div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-white/60 group-hover:text-white transition-colors"></i>
-            </a>
+                <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Interlinked AI</h1>
+                <p class="text-slate-500 font-medium text-sm mt-1">Conectando negocios con inteligencia</p>
+            </div>
 
-            <div class="h-px w-full bg-slate-200 my-2"></div>
+            <div class="flex flex-col gap-3">
+                <a href="https://interlinked-ia.com" target="_blank" class="flex items-center justify-between w-full p-4 bg-brand-blue text-white rounded-xl shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-0.5 group">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-white/20 w-8 h-8 rounded-lg flex items-center justify-center"><i class="fa-solid fa-globe text-sm"></i></div>
+                        <span class="font-semibold">Sitio Web Oficial</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-white/60 group-hover:text-white transition-colors"></i>
+                </a>
 
-            <a href="https://www.instagram.com/interlinked.ai.mx/" target="_blank"
-               class="flex items-center w-full p-4 bg-white border border-slate-200 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 transition-all duration-200 group">
-                <div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-pink-500 transition-colors">
-                    <i class="fa-brands fa-instagram"></i>
+                <button id="toggle-carousel-btn" class="flex items-center justify-between w-full p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 transition-all duration-200 group">
+                     <div class="flex items-center gap-3">
+                        <div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-blue-500 transition-colors">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <span class="font-medium">¿Cómo funciona?</span>
+                    </div>
+                    <i id="toggle-icon" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+
+
+                <div id="carousel-section" class="hidden mt-4 relative transition-all duration-500 ease-in-out opacity-0 translate-y-4">
+                    
+                    <button id="prevBtn" class="absolute left-1 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm transition-colors w-8 h-8 flex items-center justify-center border border-white/10">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute right-1 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm transition-colors w-8 h-8 flex items-center justify-center border border-white/10">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                
+                    <div id="carousel-container" class="flex overflow-x-auto snap-x snap-mandatory gap-4 no-scrollbar rounded-2xl" style="scroll-behavior: smooth;">
+                        
+                        <div class="snap-center min-w-full shrink-0 bg-slate-900 rounded-2xl py-10 px-12 text-center border border-slate-800 relative overflow-hidden flex flex-col items-center justify-center shadow-inner">
+                             <div class="absolute top-3 right-3 w-6 h-6 bg-blue-600/20 text-blue-400 font-bold rounded-full flex items-center justify-center text-xs border border-blue-500/30">1</div>
+                             <div class="bg-gradient-to-br from-slate-800 to-slate-900 w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-lg border border-white/5">
+                                 <i class="fa-solid fa-clipboard-list text-2xl text-blue-400"></i>
+                             </div>
+                             <h3 class="text-white font-bold text-base mb-2 tracking-wide">Elige tu Plan</h3>
+                             <p class="text-slate-400 text-xs leading-relaxed max-w-[200px] mx-auto">Selecciona Starter, Pro o Ultra. Todos incluyen los 3 canales.</p>
+                        </div>
+                
+                        <div class="snap-center min-w-full shrink-0 bg-slate-900 rounded-2xl py-10 px-12 text-center border border-slate-800 relative overflow-hidden flex flex-col items-center justify-center shadow-inner">
+                            <div class="absolute top-3 right-3 w-6 h-6 bg-purple-600/20 text-purple-400 font-bold rounded-full flex items-center justify-center text-xs border border-purple-500/30">2</div>
+                            <div class="bg-gradient-to-br from-slate-800 to-slate-900 w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-lg border border-white/5">
+                                <i class="fa-solid fa-link text-2xl text-purple-400"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-base mb-2 tracking-wide">Conecta Canales</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed max-w-[200px] mx-auto">Vincula WhatsApp, IG y Facebook con la API oficial.</p>
+                       </div>
+                
+                       <div class="snap-center min-w-full shrink-0 bg-slate-900 rounded-2xl py-10 px-12 text-center border border-slate-800 relative overflow-hidden flex flex-col items-center justify-center shadow-inner">
+                            <div class="absolute top-3 right-3 w-6 h-6 bg-orange-500/20 text-orange-400 font-bold rounded-full flex items-center justify-center text-xs border border-orange-500/30">3</div>
+                            <div class="bg-gradient-to-br from-slate-800 to-slate-900 w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-lg border border-white/5">
+                                <i class="fa-solid fa-gears text-2xl text-orange-400"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-base mb-2 tracking-wide">Configura y Lanza</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed max-w-[200px] mx-auto">Sube precios y horarios. La IA responde 24/7.</p>
+                       </div>
+                    </div>
+                
+                    <div class="flex justify-center gap-2 mt-4">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-600 transition-all indicator-dot"></div>
+                        <div class="w-1.5 h-1.5 rounded-full bg-slate-300 transition-all indicator-dot"></div>
+                        <div class="w-1.5 h-1.5 rounded-full bg-slate-300 transition-all indicator-dot"></div>
+                    </div>
+                
                 </div>
-                <span class="font-medium ml-2">Instagram</span>
-            </a>
+                <div class="h-px w-full bg-slate-100 my-2" id="separator"></div>
 
-            <a href="https://www.tiktok.com/@interlinked_ai?_r=1&_t=ZS-927hkyFgpTM" target="_blank"
-               class="flex items-center w-full p-4 bg-white border border-slate-200 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 transition-all duration-200 group">
-                <div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-black transition-colors">
-                    <i class="fa-brands fa-tiktok"></i>
+                <div id="social-links-container" class="flex flex-col gap-3 transition-all duration-500">
+                    <a href="https://www.instagram.com/interlinked.ai.mx/" target="_blank" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram"></i></div><span class="font-medium ml-2">Instagram</span></a>
+                    <a href="https://www.tiktok.com/@interlinked_ai?_r=1&_t=ZS-927hkyFgpTM" target="_blank" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-black transition-colors"><i class="fa-brands fa-tiktok"></i></div><span class="font-medium ml-2">TikTok</span></a>
+                    <a href="https://www.linkedin.com/company/interlinked-ai/" target="_blank" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-blue-700 transition-colors"><i class="fa-brands fa-linkedin"></i></div><span class="font-medium ml-2">LinkedIn</span></a>
+                    <a href="mailto:contacto@interlinked-ia.com" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-emerald-500 transition-colors"><i class="fa-solid fa-envelope"></i></div><span class="font-medium ml-2">Contacto</span></a>
                 </div>
-                <span class="font-medium ml-2">TikTok</span>
-            </a>
 
-            <a href="https://www.linkedin.com/company/interlinked-ai/" target="_blank"
-               class="flex items-center w-full p-4 bg-white border border-slate-200 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 transition-all duration-200 group">
-                <div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-blue-700 transition-colors">
-                    <i class="fa-brands fa-linkedin"></i>
-                </div>
-                <span class="font-medium ml-2">LinkedIn</span>
-            </a>
+            </div>
 
-            <a href="mailto:contacto@interlinked-ia.com"
-               class="flex items-center w-full p-4 bg-white border border-slate-200 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 transition-all duration-200 group">
-                <div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-emerald-500 transition-colors">
-                    <i class="fa-solid fa-envelope"></i>
+            <footer class="mt-8 text-center transition-all duration-500" id="main-footer">
+                <div class="flex justify-center items-center gap-2 opacity-40 hover:opacity-100 transition-opacity cursor-default">
+                    <i class="fa-solid fa-copyright text-xs"></i><span class="text-xs font-semibold">Interlinked AI 2025</span>
                 </div>
-                <span class="font-medium ml-2">Contacto</span>
-            </a>
+            </footer>
 
         </div>
-
-        <footer class="mt-12 text-center">
-            <div class="flex justify-center items-center gap-2 mb-2 opacity-40 hover:opacity-100 transition-opacity cursor-default">
-                <i class="fa-solid fa-copyright text-xs"></i>
-                <span class="text-xs font-semibold">Interlinked AI 2025</span>
-            </div>
-        </footer>
-
     </div>
 
+    <script>
+        const toggleBtn = document.getElementById('toggle-carousel-btn');
+        const toggleIcon = document.getElementById('toggle-icon');
+        const carouselSection = document.getElementById('carousel-section');
+        const socialLinksContainer = document.getElementById('social-links-container');
+        const separator = document.getElementById('separator');
+        const mainFooter = document.getElementById('main-footer');
+        const profileHeader = document.getElementById('profile-header');
+        const carouselContainer = document.getElementById('carousel-container');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.indicator-dot');
+
+        let isCarouselOpen = false;
+
+        toggleBtn.addEventListener('click', () => {
+            isCarouselOpen = !isCarouselOpen;
+
+            if (isCarouselOpen) {
+                // ABRIR
+                carouselSection.classList.remove('hidden');
+                setTimeout(() => {
+                    carouselSection.classList.remove('opacity-0', 'translate-y-4');
+                }, 10);
+                
+                toggleIcon.classList.add('rotate-180');
+                
+                socialLinksContainer.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+                separator.classList.add('opacity-0');
+                mainFooter.classList.add('opacity-0');
+                profileHeader.classList.add('scale-90', '-mt-4');
+                
+                setTimeout(() => {
+                    if(isCarouselOpen) { 
+                         socialLinksContainer.classList.add('hidden');
+                         separator.classList.add('hidden');
+                         mainFooter.classList.add('hidden');
+                    }
+                }, 300);
+
+            } else {
+                // CERRAR
+                carouselSection.classList.add('opacity-0', 'translate-y-4');
+                toggleIcon.classList.remove('rotate-180');
+
+                socialLinksContainer.classList.remove('hidden');
+                separator.classList.remove('hidden');
+                mainFooter.classList.remove('hidden');
+                profileHeader.classList.remove('scale-90', '-mt-4');
+
+                setTimeout(() => {
+                    socialLinksContainer.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+                    separator.classList.remove('opacity-0');
+                    mainFooter.classList.remove('opacity-0');
+                    if(!isCarouselOpen) {
+                        carouselSection.classList.add('hidden');
+                    }
+                }, 300);
+            }
+        });
+
+        // Navegación
+        nextBtn.addEventListener('click', () => {
+            carouselContainer.scrollBy({ left: carouselContainer.offsetWidth, behavior: 'smooth' });
+        });
+        prevBtn.addEventListener('click', () => {
+            carouselContainer.scrollBy({ left: -carouselContainer.offsetWidth, behavior: 'smooth' });
+        });
+
+        // Scroll Spy
+        carouselContainer.addEventListener('scroll', () => {
+            const scrollPosition = carouselContainer.scrollLeft;
+            const cardWidth = carouselContainer.offsetWidth;
+            const activeIndex = Math.round(scrollPosition / cardWidth);
+
+            indicators.forEach((dot, index) => {
+                if (index === activeIndex) {
+                    dot.classList.add('bg-blue-600');
+                    dot.classList.remove('bg-slate-300');
+                } else {
+                    dot.classList.remove('bg-blue-600');
+                    dot.classList.add('bg-slate-300');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
