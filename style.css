@@ -10,7 +10,7 @@ body {
     background-color: #111111; /* Fondo oscuro */
     color: #ffffff;
     display: flex;
-    justify_content: center;
+    justify-content: center;
     min-height: 100vh;
     padding: 20px;
 }
