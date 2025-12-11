@@ -3,49 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interlinked AI - Enlaces</title>
+    <title>Interlinked AI | Enlaces</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            light: '#334155',
+                            accent: '#3b82f6',
+                            glow: '#06b6d4',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Ajustes finos que Tailwind CDN a veces necesita ayuda */
+        body {
+            background-color: #000;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .link-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center text-white overflow-x-hidden relative">
 
-    <div class="container">
-        <div class="profile">
-            <div class="logo-container">
-                <i class="fa-solid fa-link"></i>
-            </div>
-            
-            <h1>Interlinked AI</h1>
-            <p>Software Company</p>
-        </div>
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-1/3 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </div>
 
-        <div class="social-links">
-            <a href="https://interlinked-ia.com" target="_blank" aria-label="Sitio Web">
-                <i class="fa-solid fa-globe"></i>
-            </a>
-            <a href="https://www.instagram.com/interlinked.ai.mx/" target="_blank" aria-label="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/interlinked.ai" target="_blank" aria-label="Facebook">
-                <i class="fa-brands fa-facebook-f"></i>
-            </a>
-            <a href="https://www.linkedin.com/company/interlinked-ai/" target="_blank" aria-label="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="mailto:contacto@interlinked-ia.com" aria-label="Email">
-                <i class="fa-solid fa-envelope"></i>
-            </a>
-            <a href="https://www.tiktok.com/@interlinked_ai" target="_blank" aria-label="TikTok">
-                <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a href="https://twitter.com/interlinked_ai" target="_blank" aria-label="X (Twitter)">
-                <i class="fa-brands fa-x-twitter"></i>
-            </a>
-        </div>
+    <div class="w-full max-w-md p-6 mx-auto relative z-10 animate-fade-in">
         
-        <div class="scroll-indicator">
-            <i class="fa-solid fa-arrow-down"></i>
+        <div class="text-center mb-8">
+            <div class="relative inline-block group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                
+                <div class="relative w-28 h-28 bg-slate-900 rounded-full flex items-center justify-center border-2 border-slate-700 overflow-hidden">
+                    <img src="https://ui-avatars.com/api/?name=Interlinked+AI&background=0f172a&color=38bdf8&bold=true" alt="Logo" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <h1 class="mt-6 text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-blue-200 drop-shadow-sm">
+                Interlinked AI
+            </h1>
+            <p class="mt-2 text-slate-400 font-medium tracking-wide text-sm uppercase">
+                Software & Intelligence
+            </p>
         </div>
+
+        <div class="space-y-4 flex flex-col items-center">
+            
+            <a href="https://interlinked-ia.com" target="_blank" 
+               class="group relative w-full flex items-center p-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden animate-slide-up" style="animation-delay: 100ms;">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
+                
+                <div class="relative flex items-center w-full justify-between px-2">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-white/20 p-2 rounded-lg text-white">
+                            <i class="fa-solid fa-globe text-xl"></i>
+                        </div>
+                        <span class="font-bold text-white tracking-wide">Sitio Web Oficial</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-white/70 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/interlinked.ai.mx/" target="_blank" 
+               class="glass-panel link-card w-full flex items-center p-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" style="animation-delay: 200ms;">
+                <div class="flex items-center gap-4 px-2 w-full">
+                    <div class="text-pink-400 text-2xl w-8 text-center">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <span class="font-semibold text-slate-100 group-hover:text-white">Instagram</span>
+                </div>
+            </a>
+
+            <a href="https://www.tiktok.com/@interlinked_ai?_r=1&_t=ZS-927hkyFgpTM" target="_blank" 
+               class="glass-panel link-card w-full flex items-center p-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" style="animation-delay: 300ms;">
+                <div class="flex items-center gap-4 px-2 w-full">
+                    <div class="text-cyan-400 text-2xl w-8 text-center">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <span class="font-semibold text-slate-100">TikTok</span>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/company/interlinked-ai/" target="_blank" 
+               class="glass-panel link-card w-full flex items-center p-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" style="animation-delay: 400ms;">
+                <div class="flex items-center gap-4 px-2 w-full">
+                    <div class="text-blue-500 text-2xl w-8 text-center">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </div>
+                    <span class="font-semibold text-slate-100">LinkedIn</span>
+                </div>
+            </a>
+
+            <a href="mailto:contacto@interlinked-ia.com" 
+               class="glass-panel link-card w-full flex items-center p-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" style="animation-delay: 500ms;">
+                <div class="flex items-center gap-4 px-2 w-full">
+                    <div class="text-emerald-400 text-2xl w-8 text-center">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <span class="font-semibold text-slate-100">Contacto Directo</span>
+                </div>
+            </a>
+
+        </div>
+
+        <footer class="mt-12 text-center text-slate-500 text-xs animate-slide-up" style="animation-delay: 600ms;">
+            <p>© 2025 Interlinked AI</p>
+            <div class="flex justify-center gap-4 mt-2 opacity-50">
+                <i class="fa-solid fa-code"></i>
+                <span>Powered by GitHub Pages</span>
+            </div>
+        </footer>
+
     </div>
 
 </body>
