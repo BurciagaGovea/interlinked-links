@@ -31,8 +31,7 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col items-center justify-center py-8 px-4 md:py-12">
-
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col items-center justify-center py-8 px-4 md:py-12 overflow-y-scroll"> 
     <div class="fixed top-0 right-0 -z-10 translate-x-1/3 -translate-y-1/3 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl pointer-events-none"></div>
     <div class="fixed bottom-0 left-0 -z-10 -translate-x-1/3 translate-y-1/3 w-96 h-96 bg-slate-300/40 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -71,7 +70,7 @@
                 </button>
 
 
-                <div id="carousel-section" class="hidden mt-4 relative transition-all duration-500 ease-in-out opacity-0 translate-y-4">
+                <div id="carousel-section" class="hidden relative transition-all duration-500 ease-in-out opacity-0 translate-y-4">
                     
                     <button id="prevBtn" class="absolute left-1 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm transition-colors w-8 h-8 flex items-center justify-center border border-white/10">
                         <i class="fa-solid fa-chevron-left text-xs"></i>
@@ -117,18 +116,18 @@
                     </div>
                 
                 </div>
-                <div class="h-px w-full bg-slate-100 my-2" id="separator"></div>
+                <div class="h-px w-full bg-slate-100 my-2 transition-opacity duration-300" id="separator"></div>
 
-                <div id="social-links-container" class="flex flex-col gap-3 transition-all duration-500">
+                <div id="social-links-container" class="flex flex-col gap-3 transition-all duration-300">
                     <a href="https://www.instagram.com/interlinked.ai.mx/" target="_blank" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram"></i></div><span class="font-medium ml-2">Instagram</span></a>
                     <a href="https://www.tiktok.com/@interlinked_ai?_r=1&_t=ZS-927hkyFgpTM" target="_blank" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-black transition-colors"><i class="fa-brands fa-tiktok"></i></div><span class="font-medium ml-2">TikTok</span></a>
-                    <a href="https://www.linkedin.com/company/interlinked-ai/" target="_blank" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-blue-700 transition-colors"><i class="fa-brands fa-linkedin"></i></div><span class="font-medium ml-2">LinkedIn</span></a>
+                    <a href="https://www.linkedin.com/company/interlinked-ai/" target="_blank" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-700 transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-blue-700 transition-colors"><i class="fa-brands fa-linkedin"></i></div><span class="font-medium ml-2">LinkedIn</span></a>
                     <a href="mailto:contacto@interlinked-ia.com" class="social-btn flex items-center w-full p-4 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 shadow-sm hover:shadow-hover hover:border-blue-300 hover:text-blue-600 hover:bg-white transition-all duration-200 group"><div class="w-8 flex justify-center text-xl text-slate-400 group-hover:text-emerald-500 transition-colors"><i class="fa-solid fa-envelope"></i></div><span class="font-medium ml-2">Contacto</span></a>
                 </div>
 
             </div>
 
-            <footer class="mt-8 text-center transition-all duration-500" id="main-footer">
+            <footer class="mt-8 text-center transition-all duration-300" id="main-footer">
                 <div class="flex justify-center items-center gap-2 opacity-40 hover:opacity-100 transition-opacity cursor-default">
                     <i class="fa-solid fa-copyright text-xs"></i><span class="text-xs font-semibold">Interlinked AI 2025</span>
                 </div>
@@ -157,44 +156,63 @@
 
             if (isCarouselOpen) {
                 // ABRIR
-                carouselSection.classList.remove('hidden');
-                setTimeout(() => {
-                    carouselSection.classList.remove('opacity-0', 'translate-y-4');
-                }, 10);
-                
                 toggleIcon.classList.add('rotate-180');
                 
-                socialLinksContainer.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+                // 1. PRIMERO: Desvanecer lo que se va a ir
+                socialLinksContainer.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
                 separator.classList.add('opacity-0');
                 mainFooter.classList.add('opacity-0');
-                profileHeader.classList.add('scale-90', '-mt-4');
                 
+                // Compactar header visualmente
+                profileHeader.classList.add('scale-90', '-mt-6');
+
+                // 2. DESPUÉS: Quitar botones del flujo y mostrar carrusel
                 setTimeout(() => {
-                    if(isCarouselOpen) { 
-                         socialLinksContainer.classList.add('hidden');
-                         separator.classList.add('hidden');
-                         mainFooter.classList.add('hidden');
-                    }
-                }, 300);
+                    // Ocultar completamente (display: none)
+                    socialLinksContainer.classList.add('hidden');
+                    separator.classList.add('hidden');
+                    mainFooter.classList.add('hidden');
+
+                    // Mostrar el carrusel (quitar display: none)
+                    carouselSection.classList.remove('hidden');
+                    
+                    // Pequeña pausa para que el navegador pinte el elemento antes de animar opacidad
+                    requestAnimationFrame(() => {
+                        carouselSection.classList.remove('opacity-0', 'translate-y-4');
+                        carouselSection.classList.add('mt-4'); // Añadir margen superior al aparecer
+                    });
+
+                }, 300); // Esperar a que termine la transición de opacidad (300ms)
 
             } else {
                 // CERRAR
-                carouselSection.classList.add('opacity-0', 'translate-y-4');
                 toggleIcon.classList.remove('rotate-180');
 
-                socialLinksContainer.classList.remove('hidden');
-                separator.classList.remove('hidden');
-                mainFooter.classList.remove('hidden');
-                profileHeader.classList.remove('scale-90', '-mt-4');
+                // 1. PRIMERO: Ocultar carrusel visualmente
+                carouselSection.classList.add('opacity-0', 'translate-y-4');
+                carouselSection.classList.remove('mt-4');
 
+                // Restaurar header visualmente
+                profileHeader.classList.remove('scale-90', '-mt-6');
+
+                // 2. DESPUÉS: Intercambiar elementos en el DOM
                 setTimeout(() => {
-                    socialLinksContainer.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
-                    separator.classList.remove('opacity-0');
-                    mainFooter.classList.remove('opacity-0');
-                    if(!isCarouselOpen) {
-                        carouselSection.classList.add('hidden');
-                    }
-                }, 300);
+                    // Quitar carrusel
+                    carouselSection.classList.add('hidden');
+
+                    // Restaurar botones (display: flex/block)
+                    socialLinksContainer.classList.remove('hidden');
+                    separator.classList.remove('hidden');
+                    mainFooter.classList.remove('hidden');
+
+                    // Animar entrada de botones
+                    requestAnimationFrame(() => {
+                         socialLinksContainer.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+                         separator.classList.remove('opacity-0');
+                         mainFooter.classList.remove('opacity-0');
+                    });
+                    
+                }, 300); // 300ms igual que la transición CSS
             }
         });
 
