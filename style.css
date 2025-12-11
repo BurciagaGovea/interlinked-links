@@ -1,106 +1,114 @@
-/* Reset básico para eliminar márgenes y padding por defecto */
+/* style.css - Versión Blindada */
+
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y limpia */
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
-/* Estilos para el cuerpo de la página */
 body {
-    /* Imagen de fondo de pantalla completa */
-    background-image: url('background.jpg'); /* Asegúrate de subir esta imagen a tu repo */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* El fondo se mantiene fijo al hacer scroll */
+    /* 1. FONDO: Usamos un gradiente CSS para no depender de imágenes externas */
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #66a6ff 100%);
+    /* Opción B: Si alguna vez subes la imagen, descomenta la siguiente línea: */
+    /* background-image: url('background.jpg'); background-size: cover; */
     
-    color: #ffffff; /* Color de texto blanco */
+    background-attachment: fixed;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Altura mínima del 100% de la ventana */
-    text-align: center;
+    min-height: 100vh;
     padding: 20px;
+    text-align: center;
 }
 
-/* Contenedor principal para centrar el contenido */
+/* Contenedor principal */
 .container {
+    width: 100%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px; /* Espacio entre elementos */
+    /* Agregamos una sombra suave al texto para que se lea bien siempre */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1); 
 }
 
-/* Estilos para el contenedor del logo */
+/* Círculo del Logo */
 .logo-container {
-    background-color: #ffffff; /* Fondo blanco */
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; /* Forma circular */
+    background-color: #ffffff;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    /* Sombra para que el círculo blanco destaque sobre cualquier fondo */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
 }
 
-/* Estilos para el icono del enlace dentro del logo */
+/* El icono del enlace dentro del logo */
 .logo-container i {
-    color: #0056b3; /* Color azul para el icono */
-    font-size: 3rem; /* Tamaño grande */
+    color: #0066cc; /* Azul Interlinked */
+    font-size: 3.5rem;
 }
 
-/* Estilos para los títulos */
+/* Títulos */
 h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 5px;
-    letter-spacing: 1px;
+    letter-spacing: -0.5px;
 }
 
 p {
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    font-weight: 500;
     opacity: 0.9;
+    margin-bottom: 30px; /* Espacio extra antes de los iconos */
 }
 
-/* Estilos para la fila de iconos sociales */
+/* Redes Sociales */
 .social-links {
     display: flex;
-    gap: 25px; /* Espacio entre iconos */
-    margin-top: 20px;
+    gap: 25px;
+    margin-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap; /* Para que no se rompa en pantallas muy pequeñas */
 }
 
-/* Estilos para los enlaces de los iconos */
 .social-links a {
-    color: #ffffff; /* Iconos blancos */
+    color: #ffffff;
     font-size: 1.8rem;
     text-decoration: none;
-    transition: transform 0.2s, opacity 0.2s; /* Transición suave al pasar el mouse */
+    transition: transform 0.2s, opacity 0.2s;
+    /* Círculo tenue detrás de cada icono para mejor visibilidad */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1); /* Efecto cristal suave */
 }
 
-/* Efecto hover para los iconos sociales */
 .social-links a:hover {
-    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
-    opacity: 0.8;
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.25);
 }
 
-/* Estilos para la flecha indicadora inferior */
+/* Flecha animada */
 .scroll-indicator {
-    margin-top: 40px;
-    font-size: 2rem;
-    animation: bounce 2s infinite; /* Animación de rebote */
+    margin-top: 50px;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    animation: bounce 2s infinite;
 }
 
-/* Definición de la animación de rebote */
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
 }
